@@ -227,7 +227,7 @@ main {
 
 #grocery::placeholder {
   font-family: var(--ff-secondary);
-  color: var(--clr-grey-5);
+  color: var(--clr-grey-8);
 }
 
 .submit-button {
