@@ -14,6 +14,7 @@ let editID = "";
 
 form.addEventListener('submit', addItem);
 clearButton.addEventListener('click', clearItems);
+// const deleteButton = document.querySelector('.delete-button');
 
 // Functions
 
@@ -64,6 +65,8 @@ function addItem(event) {
   }
 }
 
+// ***********FUNCTIONS BELOW HERE ***************
+
 // ***********Displaying alerts**************
 function displayAlert(text, action) {
   alert.textContent = text;
@@ -75,8 +78,11 @@ function displayAlert(text, action) {
     // alert.style.visibility = 'hidden';
   }, 1500);
 }
+// ---------------------------------------------------
 
-// Clear al items on list
+
+
+// *********** Clear al items on list ***********
 function clearItems() {
   const items = document.querySelectorAll('.grocery-item');
   if (items.length > 0) {
@@ -84,7 +90,15 @@ function clearItems() {
       list.removeChild(item);
     });
   }
+  container.classList.remove('show-container');
+  displayAlert('List has been Emptied', 'success');
+  setDefault();
+  // localStorage.removeItem('list');
+
+
 }
+// ------------------------------------------
+
 
 // *********** Local Storage & Reset **************
 function addLocalStorage(id, value) {
@@ -97,4 +111,4 @@ function setDefault() {
   editID = "";
   submitButton.textContent = 'submit';
 }
-// ------------
+// ------------------------------------------
