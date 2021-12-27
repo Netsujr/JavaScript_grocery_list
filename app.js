@@ -41,7 +41,7 @@ function addItem(event) {
     </button>
     </div>
     `;
-    // access to DELETE/EDIT button is here, after elemnet has been created
+    // access to DELETE/EDIT button MUST be after elemnet has been created
     const deleteButton = element.querySelector('.delete-button');
     const editButton = element.querySelector('.edit-button');
     deleteButton.addEventListener('click', deleteItem);
@@ -82,9 +82,17 @@ function displayAlert(text, action) {
 // ---------------------------------------------------
 
 // ***********Delete + Edit functions**************
-function deleteItem() {
-// console.log('item deleted');
-
+function deleteItem(event) {
+  // console.log('item deleted');
+  const element = event.currentTarget.parentElement.parentElement;
+  list.removeChild(element);
+  if(list.children.length === 0) {
+    container.classList.remove('show-container');
+  }
+  displayAlert('Item removed', 'danger');
+  setDefault();
+ 
+  // removeFromLocalStorage(id);
 };
 
 function editItem() {
