@@ -21,9 +21,9 @@ function addItem(event) {
   const value = grocery.value;
   const id = new Date().getTime().toString(); // little cheat to creat unique ids
   // console.log(id);
-  if(value && editFlag === false) {
+  if(value && !editFlag) {
     console.log("Add item");
-  } else if(!value && editFlag === true) {
+  } else if(!value && editFlag) {
     console.log("Edit Item");
   } else {
     console.log("Nothing to see here");
