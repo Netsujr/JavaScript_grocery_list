@@ -45,6 +45,14 @@ function addItem(event) {
       list.appendChild(element);
       displayAlert('Item Added to List', 'success');
       container.classList.add('show-container');
+      // need 2 more functions:
+
+      // store to local storage (browse cache)
+      // addToLocalStorage(id, value);
+
+      //back to default
+      // setBackToDefault();
+
 
 
   } else if (!value && editFlag) {
@@ -57,7 +65,7 @@ function addItem(event) {
   }
 }
 
-// Displaying alerts
+// ***********Displaying alerts**************
 function displayAlert(text, action) {
   alert.textContent = text;
   alert.classList.add(`alert-${action}`);
@@ -68,4 +76,7 @@ function displayAlert(text, action) {
     // alert.style.visibility = 'hidden';
   }, 1500);
 }
+
+// *********** Local Storage **************
+
 // ------------
