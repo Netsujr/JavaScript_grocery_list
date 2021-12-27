@@ -31,7 +31,7 @@ function addItem(event) {
     // console.log("Display Alert");
     // alert.textContent = 'No Groceries Entered';
     // alert.classList.add('alert-danger');
-    displayAlert('No groceries Enetered', 'danger');
+    displayAlert('No groceries Entered', 'danger');
   }
 }
 
@@ -39,5 +39,11 @@ function addItem(event) {
 function displayAlert(text, action) {
   alert.textContent = text;
   alert.classList.add(`alert-${action}`);
+
+  setTimeout(function () {
+    alert.textContent = '';
+    // alert.classList.remove(`alert-${action}`);
+    alert.style.opacity = '0';
+  }, 1500);
 }
 // ------------
