@@ -147,4 +147,5 @@ function setDefault() {
   editID = "";
   submitButton.textContent = 'submit';
 }
+
 // ------------------------------------------
