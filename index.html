@@ -9,15 +9,31 @@
   <script defer src="app.js"></script>
 </head>
 <body>
-<section class="section-center">
-  <form class="grocery-form">
-    <p class="alert"></p>
-    <h3>Renato's Groceries</h3>
-    <div class="form-control">
-      <input id="grocery" type="text" placeholder="e.g. Pineapple">
-      <button type="submit" class="submit">Add Item</button>
+  <section class="section-center">
+    <form class="grocery-form">
+      <p class="alert"></p>
+      <h3>Renato's Groceries</h3>
+      <div class="form-control">
+        <input id="grocery" type="text" placeholder="e.g. Pineapple">
+        <button type="submit" class="submit">Add Item</button>
+      </div>
+    </form>
+    <div class="grocery-container">
+      <div class="grocery-list">
+        <article class="grocery-item">
+          <p class="title">Item</p>
+          <div class="btn-container">
+            <button type="button" class="edit-btn">
+              <i class="fas fa-edit"></i>
+            </button>
+            <button type="button" class="delete-btn">
+              <i class="fas fa-trash"></i>
+            </button>
+          </div>
+        </article>
+      </div>
+      <button type="button" class="clear-button">Clear All Items</button>
     </div>
-  </form>
-</section>
+  </section>
 </body>
 </html>
