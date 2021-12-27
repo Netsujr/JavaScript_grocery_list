@@ -14,7 +14,6 @@ let editID = "";
 
 form.addEventListener('submit', addItem);
 clearButton.addEventListener('click', clearItems);
-// const deleteButton = document.querySelector('.delete-button');
 
 // Functions
 
@@ -42,20 +41,22 @@ function addItem(event) {
     </button>
     </div>
     `;
-    // adding to list
+    // access to DELETE/EDIT button is here, after elemnet has been created
+    const deleteButton = element.querySelector('.delete-button');
+    const editButton = element.querySelector('.edit-button');
+    deleteButton.addEventListener('click', deleteItem);
+    editButton.addEventListener('click', editItem);
+
+    // adding item to list
     list.appendChild(element);
     displayAlert('Item Added to List', 'success');
     container.classList.add('show-container');
-
 
     //back to default
     setDefault();
 
     // store to local storage (browse cache)
     addToLocalStorage(id, value);
-
-
-
 
   } else if (!value && editFlag) {
     // console.log("Edit Item");
@@ -80,9 +81,18 @@ function displayAlert(text, action) {
 }
 // ---------------------------------------------------
 
+// ***********Delete + Edit functions**************
+function deleteItem() {
+// console.log('item deleted');
 
+};
 
-// *********** Clear al items on list ***********
+function editItem() {
+
+};
+// ---------------------------------------------------
+
+// *********** Clear all items on list ***********
 function clearItems() {
   const items = document.querySelectorAll('.grocery-item');
   if (items.length > 0) {
@@ -94,8 +104,6 @@ function clearItems() {
   displayAlert('List has been Emptied', 'success');
   setDefault();
   // localStorage.removeItem('list');
-
-
 }
 // ------------------------------------------
 
