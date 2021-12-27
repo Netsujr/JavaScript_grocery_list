@@ -179,8 +179,8 @@ main {
 .alert-danger {
   color: #721c24;
   background: #f8d7da;
-  opacity: 1;
-  transition: opacity 2s ease-in-out;
+  /* visibility: visible;
+  transition: visibility 2s ease-in-out; */
 }
 
 .alert-success {
