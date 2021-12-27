@@ -187,12 +187,26 @@ main {
 }
 
 .grocery-form h3 {
+
   color: var(--clr-primary-1);
   margin-bottom: 1.5rem;
+  /* margin-top: 3.5rem; */
   text-align: center;
+  display: flex;
+  justify-content: center;
+  /* border: 1px solid red; */
 }
 
 .form-control {
+  display: flex;
+  /* border: 1px solid red; */
+  justify-content: center;
+  margin-top: 2.5rem;
+  /* width: 50%; */
+}
+
+.form-container {
+  /* border: 1px solid red; */
   display: flex;
   justify-content: center;
 }
