@@ -7,9 +7,20 @@ const list = document.querySelector('.grocery-list');
 const grocery = document.getElementById('.grocery');
 
 // Variables
-
 let editElement;
 let editFlag = false;
 let editID = "";
+// -------
+
+form.addEventListener('submit', addItem);
 
 
+// Functions
+function addItem(event) {
+  event.preventDefault();
+  const value = grocery.value;
+  const id = new Date().getTime().toString(); // little cheat to creat unique ids
+  // console.log(id);
+  
+}
+// ------------
