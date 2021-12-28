@@ -46,16 +46,11 @@ function addItem(event) {
     const editButton = element.querySelector('.edit-button');
     deleteButton.addEventListener('click', deleteItem);
     editButton.addEventListener('click', editItem);
-
     // adding item to list
     list.appendChild(element);
     displayAlert('Item Added to List', 'success');
     container.classList.add('show-container');
-
-    //back to default
     setDefault();
-
-    // store to local storage (browser cache)
     addToLocalStorage(id, value);
 
   } else if (value && editFlag) {
@@ -121,7 +116,7 @@ function clearItems() {
     });
   }
   container.classList.remove('show-container');
-  displayAlert('List has been Emptied', 'success');
+  displayAlert('List Empty', 'success');
   setDefault();
   // localStorage.removeItem('list');
 }
@@ -129,8 +124,13 @@ function clearItems() {
 
 
 // *********** Local Storage & Reset **************
-function addLocalStorage(id, value) {
-
+function addToLocalStorage(id, value) {
+  const grocery = { id, value };
+  // console.log(grocery);
+  let items = localStorage.getItem('list') ? JSON.parse(localStorage.getItem('list')) : [];
+  items.push(grocery);
+  localStorage.setItem('list', JSON.stringify(items));
+  // console.log(items);
 }
 
 function removeFromLocalStorage(id) {
