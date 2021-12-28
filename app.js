@@ -134,7 +134,13 @@ function addToLocalStorage(id, value) {
 }
 
 function removeFromLocalStorage(id) {
-
+  let items = getLocalStorage();
+  items = items.filter(function (item) {
+    if(item.id !== id) {
+      return item;
+    }
+  });
+  localStorage.setItem('list', JSON.stringify(items));
 }
 
 function editLocalStorage(id, value) {
