@@ -14,6 +14,7 @@ let editID = "";
 
 form.addEventListener('submit', addItem);
 clearButton.addEventListener('click', clearItems);
+window.addEventListener('DOMContentLoaded', setupItems);
 
 // Functions
 
@@ -25,29 +26,7 @@ function addItem(event) {
   // console.log(id);
   if (value && !editFlag) {
     // console.log("Add item");
-    const element = document.createElement('article');
-    element.classList.add('grocery-item'); // adding a class
-    let attribute = document.createAttribute('data-id'); // adding id
-    attribute.value = id;
-    element.setAttributeNode(attribute);
-    element.innerHTML = `
-    <p class="title">${value}</p>
-    <div class="btn-container">
-    <button type="button" class="edit-button">
-    <i class="fas fa-edit"></i>
-    </button>
-    <button type="button" class="delete-button">
-    <i class="fas fa-trash"></i>
-    </button>
-    </div>
-    `;
-    // access to DELETE/EDIT button MUST be after elemnet has been created
-    const deleteButton = element.querySelector('.delete-button');
-    const editButton = element.querySelector('.edit-button');
-    deleteButton.addEventListener('click', deleteItem);
-    editButton.addEventListener('click', editItem);
-    // adding item to list
-    list.appendChild(element);
+    createListItem(id, value);
     displayAlert('Item Added to List', 'success');
     container.classList.add('show-container');
     setDefault();
@@ -85,6 +64,7 @@ function deleteItem(event) {
   // console.log('item deleted');
   const element = event.currentTarget.parentElement.parentElement;
   const id = element.dataset.id;
+
   list.removeChild(element);
   if (list.children.length === 0) {
     container.classList.remove('show-container');
@@ -118,7 +98,7 @@ function clearItems() {
   container.classList.remove('show-container');
   displayAlert('List Empty', 'success');
   setDefault();
-  // localStorage.removeItem('list');
+  localStorage.removeItem('list');
 }
 // ------------------------------------------
 
@@ -135,8 +115,8 @@ function addToLocalStorage(id, value) {
 
 function getLocalStorage() {
   return localStorage.getItem('list')
-  ? JSON.parse(localStorage.getItem('list'))
-  : [];
+    ? JSON.parse(localStorage.getItem('list'))
+    : [];
 }
 
 function removeFromLocalStorage(id) {
@@ -169,3 +149,40 @@ function setDefault() {
 }
 
 // ------------------------------------------
+
+function setupItems() {
+  let items = getLocalStorage();
+  if (items.length > 0) {
+    items.forEach(function (item) {
+      createListItem(item.id, item.value);
+    });
+    container.classList.add('show-container');
+  }
+  console.log(items);
+}
+
+function createListItem(id, value) {
+  const element = document.createElement('article');
+  element.classList.add('grocery-item'); // adding a class
+  let attribute = document.createAttribute('data-id'); // adding id
+  attribute.value = id;
+  element.setAttributeNode(attribute);
+  element.innerHTML = `
+  <p class="title">${value}</p>
+  <div class="btn-container">
+  <button type="button" class="edit-button">
+  <i class="fas fa-edit"></i>
+  </button>
+  <button type="button" class="delete-button">
+  <i class="fas fa-trash"></i>
+  </button>
+  </div>
+  `;
+  // access to DELETE/EDIT button MUST be after elemnet has been created
+  const deleteButton = element.querySelector('.delete-button');
+  const editButton = element.querySelector('.edit-button');
+  deleteButton.addEventListener('click', deleteItem);
+  editButton.addEventListener('click', editItem);
+  // adding item to list
+  list.appendChild(element);
+}
