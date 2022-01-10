@@ -158,7 +158,7 @@ function setupItems() {
     });
     container.classList.add('show-container');
   }
-  console.log(items);
+  // console.log(items);
 }
 
 function createListItem(id, value) {
